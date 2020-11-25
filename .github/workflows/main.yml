@@ -1,17 +1,29 @@
+name: learn-github-actions
 on: [push]
-
 jobs:
-  hello_world_job:
+  check-bats-version:
     runs-on: ubuntu-latest
-    name: A job to say hello
     steps:
-    - name: 'Make Artifact'
-      run: |
-        mkdir -p myArtifacts
-        echo hi > myArtifacts/my_file.txt
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+      - run: npm install -g bats
+      - run: bats -v
+      
+      
+# on: [push]
 
-    - name: 'Upload Artifact'
-      uses: actions/upload-artifact@v2
-      with:
-        name: my-artifact
-        path: myArtifacts
+# jobs:
+#   hello_world_job:
+#     runs-on: ubuntu-latest
+#     name: A job to say hello
+#     steps:
+#     - name: 'Make Artifact'
+#       run: |
+#         mkdir -p myArtifacts
+#         echo hi > myArtifacts/my_file.txt
+
+#     - name: 'Upload Artifact'
+#       uses: actions/upload-artifact@v2
+#       with:
+#         name: my-artifact
+#         path: myArtifacts
