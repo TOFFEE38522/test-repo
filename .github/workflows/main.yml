@@ -5,10 +5,9 @@ jobs:
     runs-on: ubuntu-latest
     name: A job to say hello
     steps:
-    - uses: actions/checkout@v2
-    - id: foo
-      uses: skedwards88/test-area@v5
+    - name: 'Upload Artifact'
+      uses: actions/upload-artifact@v2
       with:
-        who-to-greet: 'Mona the Octocat'
-    - run: echo random-number ${{ steps.foo.outputs.random-number }} 
-      shell: bash
+        name: my-artifact
+        path: my_file.txt
+        retention-days: 5
