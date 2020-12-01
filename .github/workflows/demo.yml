@@ -1,0 +1,41 @@
+name: multi-platform-build
+
+on: workflow_dispatch
+
+jobs:
+ t1-1:
+   runs-on: ubuntu-latest
+   steps:
+     - run: echo "..."
+ 
+ t1-2:
+   runs-on: ubuntu-latest
+   steps:
+     - run: echo "..."
+ 
+ t1-3:
+   runs-on: ubuntu-latest
+   steps:
+     - run: echo "..."
+ 
+ t2-1:
+   runs-on: ubuntu-latest
+   needs: [t1-1]
+   steps:
+     - run: echo "..."
+ 
+ t2-2:
+   runs-on: ubuntu-latest
+   strategy:
+    matrix:
+      node-version: [4,6,8]
+   needs: [t1-2]
+   steps:
+     - run: echo "..."
+ 
+ ios-test-C:
+   runs-on: ubuntu-latest
+   needs: [t2-1,t2-2]
+   steps:
+     - run: echo "..."
+ 
