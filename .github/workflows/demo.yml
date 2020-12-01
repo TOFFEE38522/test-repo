@@ -50,7 +50,7 @@ jobs:
 
  deploy:
    runs-on: ubuntu-latest
-   needs: [lint, unit-test, build-1]
+   needs: [lint, unit-test, integration-1, integration-2]
    steps:
      - run: echo "..."
  
