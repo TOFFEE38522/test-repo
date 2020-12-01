@@ -16,10 +16,11 @@ jobs:
  build-3:
    runs-on: ubuntu-latest
    steps:
-   - name: Sleep for 30 seconds
-     uses: jakejarvis/wait-action@master
-     with:
-       time: '600'
+     - run: echo "..."
+#    - name: Sleep for 30 seconds
+#      uses: jakejarvis/wait-action@master
+#      with:
+#        time: '600'
  
  lint:
    runs-on: ubuntu-latest
