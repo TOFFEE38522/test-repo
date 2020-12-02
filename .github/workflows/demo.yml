@@ -3,72 +3,8 @@ name: build-test-deploy
 on: [push, workflow_dispatch]
 
 jobs:
- build-1:
-   runs-on: ubuntu-latest
-   steps:
-   - name: Sleep for 30 seconds
-     uses: jakejarvis/wait-action@master
-     with:
-       time: '77'
- 
- build-2:
-   runs-on: ubuntu-latest
-   steps:
-   - name: Sleep for 30 seconds
-     uses: jakejarvis/wait-action@master
-     with:
-       time: '125'
- 
- build-3:
-   runs-on: ubuntu-latest
-   steps:
-   - name: Sleep for 30 seconds
-     uses: jakejarvis/wait-action@master
-     with:
-       time: '35'
- 
- lint:
-   runs-on: ubuntu-latest
-   needs: [build-2]
-   steps:
-   - name: Sleep for 30 seconds
-     uses: jakejarvis/wait-action@master
-     with:
-       time: '47'
- 
- unit-test:
-   runs-on: ubuntu-latest
-   strategy:
-    matrix:
-      node-version: [4,6,8]
-   needs: [build-3]
-   steps:
-   - name: Sleep for 30 seconds
-     uses: jakejarvis/wait-action@master
-     with:
-       time: '5'
- 
- integration-1:
-  runs-on: ubuntu-latest
-  needs: [build-1]
-  steps:
-   - name: Sleep for 30 seconds
-     uses: jakejarvis/wait-action@master
-     with:
-       time: '60'
-       
- integration-2:
-   runs-on: ubuntu-latest
-   needs: [build-1]
-   steps:
-   - name: Sleep for 30 seconds
-     uses: jakejarvis/wait-action@master
-     with:
-       time: '6000'
-
  deploy:
    runs-on: ubuntu-latest
-   needs: [lint, unit-test, integration-1, integration-2]
    steps:
-     - run: echo "..."
+     - run: echo GITHUB_WORKFLOW
  
