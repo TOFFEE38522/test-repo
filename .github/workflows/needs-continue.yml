@@ -6,15 +6,12 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps: 
-      - run: exit 1
-#         continue-on-error: true
+      - run: exit 1 # This will cause job1 to fail
   
   job2:
     needs: [job1]
-    if: ${{ always() }}
+    if: ${{ always() }} # This makes job2 run even if job1 fails
     runs-on: ubuntu-latest
     steps: 
-      - run: |
-          echo '...'
-          echo 'ooo'
+      - run: echo '...'
   
