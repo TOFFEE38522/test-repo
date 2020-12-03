@@ -9,7 +9,7 @@ jobs:
       - run: echo '...'
   
   job2:
-  needs: [job1]
+    needs: [job1]
     runs-on: ubuntu-latest
     steps: 
       - run: echo '...'
