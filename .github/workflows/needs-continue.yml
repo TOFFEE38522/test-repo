@@ -6,7 +6,8 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps: 
-      - run: echo '...'
+#       - run: echo '...'
+      - run: exit 1
   
   job2:
     needs: [job1]
