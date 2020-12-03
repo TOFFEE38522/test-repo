@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
       - run: exit 1
-        continue-on-error: true
+#         continue-on-error: true
   
   job2:
     needs: [job1]
@@ -16,6 +16,5 @@ jobs:
     steps: 
       - run: |
           echo '...'
-          exit 1
           echo 'ooo'
   
