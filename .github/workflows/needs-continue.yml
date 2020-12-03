@@ -1,0 +1,16 @@
+name: need-fail-continue
+
+on: [push, workflow-dispatch]
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps: 
+      - run: echo '...'
+  
+  job2:
+  needs: [job1]
+    runs-on: ubuntu-latest
+    steps: 
+      - run: echo '...'
+  
