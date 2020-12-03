@@ -1,6 +1,6 @@
 name: need-fail-continue
 
-on: [push, workflow-dispatch]
+on: [push, workflow_dispatch]
 
 jobs:
   job1:
