@@ -1,5 +1,5 @@
 name: vars
-on: [push]
+on: [push, workflow_dispatch]
 jobs:
   j1:
     steps:
