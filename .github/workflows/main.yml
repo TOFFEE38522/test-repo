@@ -11,11 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Deploying to production server on branch $GITHUB_REF"
-  j3:
-    if: $GITHUB_REF == 'refs/heads/main'
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Deploying to production server on branch $GITHUB_REF"
+#   j3:
+#     if: $GITHUB_REF == 'refs/heads/main'
+#     runs-on: ubuntu-latest
+#     steps:
+#       - run: echo "Deploying to production server on branch $GITHUB_REF"
   j4:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
