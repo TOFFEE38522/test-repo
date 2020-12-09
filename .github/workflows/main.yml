@@ -3,7 +3,7 @@ on: [push, workflow_dispatch]
 jobs:
   j1:
     steps:
-      - run: echo "context {{github.ref}}"
+      - run: echo "context ${{ github.ref }}"
       - run: echo "var $GITHUB_REF"
     runs-on: ubuntu-latest
   j2:
@@ -16,8 +16,3 @@ jobs:
 #     runs-on: ubuntu-latest
 #     steps:
 #       - run: echo "Deploying to production server on branch $GITHUB_REF"
-  j4:
-    if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Deploying to production server on branch {{github.ref}}"
