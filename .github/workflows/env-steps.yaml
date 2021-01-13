@@ -17,16 +17,16 @@ jobs:
   fail:
     runs-on: ubuntu-latest
     steps: 
-      - continue-on-error: True
+      - continue-on-error: true
       - run: |
           echo hhh
           exit 1
           echo ...
-  continue:
+  conttt:
     runs-on: ubuntu-latest
     needs: [fail]
     steps: 
-      - continue-on-error: True
+      - continue-on-error: true
       - run: |
           echo mmmm
 
