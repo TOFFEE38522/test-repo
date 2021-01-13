@@ -23,7 +23,6 @@ jobs:
         run: |
           echo ${{ fromJson(env.contvar) }}
           echo ${{ fromJson(env.timevar) }}
-          echo ${{ toJSON() }}
   two:
     runs-on: ubuntu-latest
     steps:
