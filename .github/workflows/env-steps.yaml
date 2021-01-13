@@ -1,8 +1,8 @@
 name: vars
 on: [push, workflow_dispatch]
 env: 
-  contvar: falsee
-  timevar: '3'
+  contvar: false
+  timevar: 3
   
 # jobs:
 #   with-job:
@@ -18,17 +18,27 @@ jobs:
   fail:
     runs-on: ubuntu-latest
     steps: 
-      - continue-on-error: ${{ fromJSON(env.contvar) }}
-        timeout-minutes: ${{ fromJSON(env.timevar) }}
+      - continue-on-error: ${{ fromjson(env.contvar) }}
+        timeout-minutes: ${{ fromjson(env.timevar) }}
         run: |
           echo ${{ fromJson(env.contvar) }}
           echo ${{ fromJson(env.timevar) }}
-  conttt:
+          echo ${{ toJSON() }}
+  two:
     runs-on: ubuntu-latest
-    needs: [fail]
-    steps: 
-      - run: |
-          echo mmmm
+    steps:
+    - name: Dump GitHub context
+      env:
+        aaa: ${{ toJSON(github) }}
+        bbb: ${{ tojson(github) }}
+        ccc: ${{ toJson(github) }}
+      run: |
+        echo ${{ aaa }}
+        echo ${{ bbb }}
+        echo ${{ ccc }}
+        echo ${{ toJson(github) }}
+
+
 
    
 #   ${{ env.flowvar }}:
