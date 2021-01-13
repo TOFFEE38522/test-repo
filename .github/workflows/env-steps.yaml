@@ -1,7 +1,7 @@
 name: vars
 on: [push, workflow_dispatch]
 env: 
-  flowvar: true
+  flowvar: cow
   
 # jobs:
 #   with-job:
@@ -17,7 +17,7 @@ jobs:
   fail:
     runs-on: ubuntu-latest
     steps: 
-      - continue-on-error: ${{ env.flowvar }}
+      - continue-on-error: ${{ (1===1)}}
         run: |
           echo hhh
           exit 1
@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [fail]
     steps: 
-      - continue-on-error: ${{ env.flowvar }}
+      - continue-on-error: true
         run: |
           echo mmmm
 
