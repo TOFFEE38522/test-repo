@@ -1,7 +1,7 @@
 name: vars
 on: [push, workflow_dispatch]
 env: 
-  flowvar: flowflowflow
+  flowvar: ubuntu-latest
   
 # jobs:
 #   with-job:
@@ -18,9 +18,9 @@ jobs:
     steps:
       - name: ${{ env.flowvar }}
         run: echo "${{ env.jobvar }}"
-    runs-on: ubuntu-latest
+    runs-on: ${{ env.flowvar }}
     env: 
-      jobvar: ${{ env.flowvar }}
+      jobvar: c
 
      
   
