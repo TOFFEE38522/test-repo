@@ -5,7 +5,10 @@ jobs:
     steps:
       - run: echo "context ${{ github.ref }}"
       - run: echo "var $GITHUB_REF"
+      - run: echo "${{ env.var1 }}"
     runs-on: ubuntu-latest
+    env: 
+      var1: monkey
   j2:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
