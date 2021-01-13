@@ -11,7 +11,7 @@ jobs:
       - id: foo
         uses: skedwards88/test-area@v5
         with:
-          who-to-greet: kjlkjkl 
+          who-to-greet: ${{ env.flowvar }} 
     
 # jobs:
 #   name:
