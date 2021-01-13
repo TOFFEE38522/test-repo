@@ -1,39 +1,45 @@
 name: vars
 on: [push, workflow_dispatch]
 env: 
-  flowvar: flowvar
+  flowvar: v1
+  
 jobs:
-  name:
-    steps:
-      - name: ${{ env.flowvar }}
-        run: echo "${{ env.jobvar }}"
+  uses-job:
     runs-on: ubuntu-latest
-    env: 
-      jobvar: jobvar
+    steps:
+      - uses: actions/setup-node@${{ env.flowvar }}
+# jobs:
+#   name:
+#     steps:
+#       - name: ${{ env.flowvar }}
+#         run: echo "${{ env.jobvar }}"
+#     runs-on: ubuntu-latest
+#     env: 
+#       jobvar: jobvar
 
      
   
-  echo-job-var:
-    steps:
-      - name: echo-step
-        run: echo "${{ env.jobvar }}"
-    runs-on: ubuntu-latest
-    env: 
-      jobvar: jobvar
+#   echo-job-var:
+#     steps:
+#       - name: echo-step
+#         run: echo "${{ env.jobvar }}"
+#     runs-on: ubuntu-latest
+#     env: 
+#       jobvar: jobvar
 
-  echo-step-var:
-    steps:
-      - name: echo-step
-        run: echo "${{ env.stepvar1 }}"
-        env:
-          stepvar1: stepvar1  
-    runs-on: ubuntu-latest
+#   echo-step-var:
+#     steps:
+#       - name: echo-step
+#         run: echo "${{ env.stepvar1 }}"
+#         env:
+#           stepvar1: stepvar1  
+#     runs-on: ubuntu-latest
     
-  conditional-job:
-    steps:
-     - name: conditional=step
-       if: ${{ env.var1 == 'cow' }}
-       run: echo "${{ env.var1 }}"
-    runs-on: ubuntu-latest
-    env: 
-      var1: cow
+#   conditional-job:
+#     steps:
+#      - name: conditional=step
+#        if: ${{ env.var1 == 'cow' }}
+#        run: echo "${{ env.var1 }}"
+#     runs-on: ubuntu-latest
+#     env: 
+#       var1: cow
