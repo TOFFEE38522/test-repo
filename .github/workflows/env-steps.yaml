@@ -22,13 +22,13 @@ jobs:
           echo hhh
           exit 1
           echo ...
-#   conttt:
-#     runs-on: ubuntu-latest
-# #     needs: [fail]
-#     steps: 
-#       - continue-on-error: true
-#       - run: |
-#           echo mmmm
+  conttt:
+    runs-on: ubuntu-latest
+    needs: [fail]
+    steps: 
+      - continue-on-error: true
+        run: |
+          echo mmmm
 
    
 #   ${{ env.flowvar }}:
