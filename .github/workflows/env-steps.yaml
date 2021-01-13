@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
       - continue-on-error: ${{ env.flowvar == 'cow' }}
-        timeout-minutes: ${{ env.timevar }}
+        timeout-minutes: ${{ fromJson(env.timevar) }}
         run: |
           echo hhh
 #   conttt:
