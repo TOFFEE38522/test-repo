@@ -21,9 +21,8 @@ jobs:
       - continue-on-error: ${{ fromJson(env.contvar) }}
         timeout-minutes: ${{ fromJson(env.timevar) }}
         run: |
-          echo hhh
-          exit 1
-          echo kre
+          echo ${{ fromJson(env.contvar) }}
+          echo ${{ fromJson(env.timevar) }}
   conttt:
     runs-on: ubuntu-latest
     needs: [fail]
