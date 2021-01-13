@@ -32,9 +32,9 @@ jobs:
         bbb: ${{ tojson(github) }}
         ccc: ${{ toJson(github) }}
       run: |
-        echo ${{ aaa }}
-        echo ${{ bbb }}
-        echo ${{ ccc }}
+        echo ${{ env.aaa }}
+        echo ${{ env.bbb }}
+        echo ${{ env.ccc }}
         echo ${{ toJson(github) }}
 
 
