@@ -17,12 +17,19 @@ jobs:
   fail:
     runs-on: ubuntu-latest
     steps: 
-      - continue-on-error: true
+      - continue-on-error: True
       - run: |
           echo hhh
           exit 1
           echo ...
-        
+  continue:
+    runs-on: ubuntu-latest
+    needs: [fail]
+    steps: 
+      - continue-on-error: True
+      - run: |
+          echo mmmm
+
    
 #   ${{ env.flowvar }}:
 #     steps:
