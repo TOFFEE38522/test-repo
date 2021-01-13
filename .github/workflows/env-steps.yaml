@@ -3,9 +3,9 @@ on: [push, workflow_dispatch]
 env: 
   flowvar: flowvar
 jobs:
-  ${{ env.flowvar }}:
+  name:
     steps:
-      - name: echo-step
+      - name: ${{ env.flowvar }}
         run: echo "${{ env.jobvar }}"
     runs-on: ubuntu-latest
     env: 
