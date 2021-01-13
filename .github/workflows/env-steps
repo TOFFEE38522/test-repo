@@ -1,0 +1,22 @@
+name: vars
+on: [push, workflow_dispatch]
+env: 
+  flowvar: flowvar
+jobs:
+  env: 
+    jobvar: jobvar
+  echo-job:
+    steps:
+      - name: echo-step
+        run: echo "${{ env.stepvar1 }}"
+    runs-on: ubuntu-latest
+    env: 
+      stepvar1: echovar
+  conditional-job:
+    steps:
+     - name: conditional=step
+       if: ${{ env.var1 == 'cow' }}
+       run: echo "${{ env.var1 }}"
+    runs-on: ubuntu-latest
+    env: 
+      var1: cow
