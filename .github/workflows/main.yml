@@ -1,4 +1,4 @@
-name: vars
+name: main
 on: [push, workflow_dispatch]
 jobs:
   j1:
