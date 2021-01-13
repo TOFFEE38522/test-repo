@@ -22,13 +22,12 @@ jobs:
         timeout-minutes: ${{ fromJson(env.timevar) }}
         run: |
           echo hhh
-#   conttt:
-#     runs-on: ubuntu-latest
-#     needs: [fail]
-#     steps: 
-#       - continue-on-error: ${{ env.flowvar == 'cow' }}
-#         run: |
-#           echo mmmm
+  conttt:
+    runs-on: ubuntu-latest
+    needs: [fail]
+    steps: 
+      - run: |
+          echo mmmm
 
    
 #   ${{ env.flowvar }}:
