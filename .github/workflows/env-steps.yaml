@@ -18,8 +18,8 @@ jobs:
   fail:
     runs-on: ubuntu-latest
     steps: 
-      - continue-on-error: ${{ fromJson(env.contvar) }}
-        timeout-minutes: ${{ fromJson(env.timevar) }}
+      - continue-on-error: ${{ fromJSON(env.contvar) }}
+        timeout-minutes: ${{ fromJSON(env.timevar) }}
         run: |
           echo ${{ fromJson(env.contvar) }}
           echo ${{ fromJson(env.timevar) }}
