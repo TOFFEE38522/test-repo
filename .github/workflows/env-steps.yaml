@@ -19,18 +19,16 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
       - continue-on-error: ${{ env.flowvar == 'cow' }}
-        timeout-minutes: ${{ env.timevar }}
+        timeout-minutes: ${{ env.timevar | int }}
         run: |
           echo hhh
-          exit 1
-          echo ...
-  conttt:
-    runs-on: ubuntu-latest
-    needs: [fail]
-    steps: 
-      - continue-on-error: ${{ env.flowvar == 'cow' }}
-        run: |
-          echo mmmm
+#   conttt:
+#     runs-on: ubuntu-latest
+#     needs: [fail]
+#     steps: 
+#       - continue-on-error: ${{ env.flowvar == 'cow' }}
+#         run: |
+#           echo mmmm
 
    
 #   ${{ env.flowvar }}:
