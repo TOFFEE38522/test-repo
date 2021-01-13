@@ -8,11 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: with-step
-        uses: actions/hello_world@main
-        with:
-          first_name: ${{ env.flowvar }}
-          middle_name: The
-          last_name: Octocat 
+        uses: wxdlong/hello-action@v7
+          with:
+            who-to-greet: ${{ env.jobvar }} 
 # jobs:
 #   name:
 #     steps:
