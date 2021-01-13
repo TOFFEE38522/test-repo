@@ -1,8 +1,8 @@
 name: vars
 on: [push, workflow_dispatch]
 env: 
-  contvar: false
-  timevar: 3
+  contvar: falsee
+  timevar: '3'
   
 # jobs:
 #   with-job:
