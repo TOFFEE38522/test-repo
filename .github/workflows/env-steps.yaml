@@ -17,6 +17,7 @@ jobs:
   fail:
     runs-on: ubuntu-latest
     steps: 
+      - continue-on-error: true
       - run: |
           echo hhh
           exit 1
