@@ -10,7 +10,7 @@ jobs:
       - name: with-step
         uses: wxdlong/hello-action@v7
         with:
-          who-to-greet: ${{ env.jobvar }} 
+          who-to-greet: 'jjjjjj' 
 # jobs:
 #   name:
 #     steps:
