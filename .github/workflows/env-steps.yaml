@@ -2,6 +2,7 @@ name: vars
 on: [push, workflow_dispatch]
 env: 
   flowvar: cow
+  timevar: 3
   
 # jobs:
 #   with-job:
@@ -18,6 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
       - continue-on-error: ${{ env.flowvar == 'cow' }}
+        timeout-minutes: ${{ env.timevar }}
         run: |
           echo hhh
           exit 1
