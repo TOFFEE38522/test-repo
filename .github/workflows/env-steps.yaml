@@ -29,14 +29,8 @@ jobs:
     - name: Dump GitHub context
       env:
         aaa: ${{ toJSON(github) }}
-        bbb: ${{ tojson(github) }}
-        ccc: ${{ toJson(github) }}
       run: |
         echo ${{ env.aaa }}
-        echo ${{ env.bbb }}
-        echo ${{ env.ccc }}
-        echo ${{ toJson(github) }}
-
 
 
    
