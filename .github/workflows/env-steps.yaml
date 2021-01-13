@@ -10,7 +10,7 @@ jobs:
       - name: with-step
         uses: wxdlong/hello-action@v7
         with:
-          who-to-greet: 'jjjjjj' 
+          who-to-greet: kjlkjkl 
 # jobs:
 #   name:
 #     steps:
