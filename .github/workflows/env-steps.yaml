@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
       - continue-on-error: ${{ env.flowvar == 'cow' }}
-        timeout-minutes: ${{ env.timevar | int }}
+        timeout-minutes: ${{ env.timevar }}
         run: |
           echo hhh
 #   conttt:
