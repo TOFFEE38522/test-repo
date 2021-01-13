@@ -17,7 +17,7 @@ jobs:
   fail:
     runs-on: ubuntu-latest
     steps: 
-      - continue-on-error: ${{ env.flowvar | bool }} 
+      - continue-on-error: ${{ 'cow' == 'cow' }}
         run: |
           echo hhh
           exit 1
