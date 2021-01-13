@@ -11,7 +11,9 @@ jobs:
   job2:
     needs: job1
     runs-on: ubuntu-latest
-    strategy:
-      matrix: ${{fromJson(needs.job1.outputs.matrix)}}
     steps:
-    - run: build
+    - id: print
+      run: |
+        echo ${{fromJson(needs.job1.outputs.matrix)}}
+        echo ...
+        echo ${{ needs.job1.outputs.matrix }}
