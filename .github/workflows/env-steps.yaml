@@ -18,7 +18,7 @@ jobs:
     steps:
       - name: ${{ env.flowvar }}
         run: echo "${{ env.jobvar }}"
-    runs-on: ${{ env.flowvar }}
+    runs-on: ubuntu-latest
     env: 
       jobvar: c
 
