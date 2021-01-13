@@ -7,6 +7,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - id: foo
-      uses: skedwards88/test-area/action@v5
+      uses: skedwards88/test-area@v5
       with:
         who-to-greet: 'Mona the Octocat'
