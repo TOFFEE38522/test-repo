@@ -18,19 +18,12 @@ jobs:
   fail:
     runs-on: ubuntu-latest
     steps: 
-      - continue-on-error: ${{ fromjson(env.contvar) }}
-        timeout-minutes: ${{ fromjson(env.timevar) }}
+      - continue-on-error: ${{ tojson(env.contvar) }}
+        timeout-minutes: ${{ tojson(env.timevar) }}
         run: |
-          echo ${{ fromJson(env.contvar) }}
-          echo ${{ fromJson(env.timevar) }}
-  two:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Dump GitHub context
-      env:
-        aaa: ${{ toJSON(github) }}
-      run: |
-        echo ${{ env.aaa }}
+          echo ${{ toJson(env.contvar) }}
+          echo ${{ toJson(env.timevar) }}
+  
 
 
    
