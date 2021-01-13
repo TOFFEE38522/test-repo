@@ -3,15 +3,32 @@ on: [push, workflow_dispatch]
 env: 
   flowvar: flowvar
 jobs:
-#   env: 
-#     jobvar: jobvar
-  echo-job:
+  ${{ env.flowvar }}:
+    steps:
+      - name: echo-step
+        run: echo "${{ env.jobvar }}"
+    runs-on: ubuntu-latest
+    env: 
+      jobvar: jobvar
+
+     
+  
+  echo-job-var:
+    steps:
+      - name: echo-step
+        run: echo "${{ env.jobvar }}"
+    runs-on: ubuntu-latest
+    env: 
+      jobvar: jobvar
+
+  echo-step-var:
     steps:
       - name: echo-step
         run: echo "${{ env.stepvar1 }}"
+        env:
+          stepvar1: stepvar1  
     runs-on: ubuntu-latest
-    env: 
-      stepvar1: echovar
+    
   conditional-job:
     steps:
      - name: conditional=step
