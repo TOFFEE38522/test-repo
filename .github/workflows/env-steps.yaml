@@ -1,7 +1,7 @@
 name: vars
 on: [push, workflow_dispatch]
 env: 
-  flowvar: cow
+  contvar: true
   timevar: 3
   
 # jobs:
@@ -18,7 +18,7 @@ jobs:
   fail:
     runs-on: ubuntu-latest
     steps: 
-      - continue-on-error: ${{ env.flowvar == 'cow' }}
+      - continue-on-error: ${{ fromJson(env.contvar) }}
         timeout-minutes: ${{ fromJson(env.timevar) }}
         run: |
           echo hhh
