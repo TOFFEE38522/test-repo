@@ -14,13 +14,22 @@ env:
 #           who-to-greet: ${{ env.flowvar }} 
     
 jobs:
-  ${{ env.flowvar }}:
-    steps:
-      - name: ${{ env.flowvar }}
-        run: echo "${{ env.jobvar }}"
+  fail:
     runs-on: ubuntu-latest
-    env: 
-      jobvar: c
+    steps: 
+      - run: |
+          echo hhh
+          exit 1
+          echo ...
+        
+   
+#   ${{ env.flowvar }}:
+#     steps:
+#       - name: ${{ env.flowvar }}
+#         run: echo "${{ env.jobvar }}"
+#     runs-on: ubuntu-latest
+#     env: 
+#       jobvar: c
 
      
   
