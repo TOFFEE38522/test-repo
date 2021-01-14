@@ -1,63 +1,19 @@
-name: vars
-on: [push, workflow_dispatch]
-env: 
-  contvar: false
-  timevar: 3
-  
-# jobs:
-#   with-job:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v2
-#       - id: foo
-#         uses: skedwards88/test-area@v5
-#         with:
-#           who-to-greet: ${{ env.flowvar }} 
-    
+env:
+  MY_ENV: foo
+
+name: env-steps
+
+on: [push]
+
 jobs:
-  fail:
+  j1:
+    name: Job 1
     runs-on: ubuntu-latest
-    steps: 
-      - continue-on-error: ${{ tojson(env.contvar) }}
-        timeout-minutes: ${{ tojson(env.timevar) }}
-        run: |
-          echo ${{ toJson(env.contvar) }}
-          echo ${{ toJson(env.timevar) }}
-  
+    steps:
+      - name: env context in action
+        run: echo ${{ env.MY_ENV }}
+      - name: env context in action
+        env:
+          my_os: ${{ env.MY_ENV }} 
+        run: echo ${{ env.my_os }}
 
-
-   
-#   ${{ env.flowvar }}:
-#     steps:
-#       - name: ${{ env.flowvar }}
-#         run: echo "${{ env.jobvar }}"
-#     runs-on: ubuntu-latest
-#     env: 
-#       jobvar: c
-
-     
-  
-#   echo-job-var:
-#     steps:
-#       - name: echo-step
-#         run: echo "${{ env.jobvar }}"
-#     runs-on: ubuntu-latest
-#     env: 
-#       jobvar: jobvar
-
-#   echo-step-var:
-#     steps:
-#       - name: echo-step
-#         run: echo "${{ env.stepvar1 }}"
-#         env:
-#           stepvar1: stepvar1  
-#     runs-on: ubuntu-latest
-    
-#   conditional-job:
-#     steps:
-#      - name: conditional=step
-#        if: ${{ env.var1 == 'cow' }}
-#        run: echo "${{ env.var1 }}"
-#     runs-on: ubuntu-latest
-#     env: 
-#       var1: cow
