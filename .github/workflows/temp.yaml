@@ -19,4 +19,4 @@ jobs:
     - name: again
       id: step_3
       run: |
-          echo "${{ $my_var }}"
+          echo $my_var
