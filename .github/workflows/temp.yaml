@@ -1,4 +1,4 @@
-name: Python package
+name: Custom shell
 
 on: [push]
 
@@ -11,5 +11,5 @@ jobs:
       - name: Display the path
         run: |
           print %ENV
-        shell: perl {0}
+        shell: python
 
