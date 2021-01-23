@@ -18,4 +18,4 @@ jobs:
     - name: Use the value
       id: step_two
       run: |
-          echo "${{ my_var.name }}"
+          echo "${{ env.my_var }}"
