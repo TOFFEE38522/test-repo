@@ -12,5 +12,5 @@ jobs:
         run: |
           import os
           print(os.environ['PATH'])
-        shell: python
+        shell: perl {0}
 
