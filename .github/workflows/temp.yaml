@@ -6,9 +6,6 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: [2.7, 3.5, 3.6, 3.7, 3.8]
 
     steps:
     - name: Set the value
@@ -19,3 +16,7 @@ jobs:
       id: step_two
       run: |
           echo "${{ env.my_var }}"
+    - name: again
+      id: step_3
+      run: |
+          echo "${{ $my_var }}"
