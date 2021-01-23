@@ -5,14 +5,14 @@ on: [push]
 jobs:
   build:
 
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: [2.7, 3.5, 3.6, 3.7, 3.8]
+    runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v2
-      with:
-        python-version: ${{ matrix.python-version }}
+#     - uses: actions/checkout@v2
+#     - uses: shogo82148/actions-setup-perl@v1
+#       with:
+#         perl-version: '5.32'
+    - run: |
+          print %ENV
+          shell: perl {0}
+
