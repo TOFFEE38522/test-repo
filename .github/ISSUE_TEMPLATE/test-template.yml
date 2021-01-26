@@ -1,0 +1,56 @@
+name: Improve existing docs (new)
+about: Create an issue about existing content (not upcoming releases/ships), whether reported by users or noticed by Hubbers.
+title: "[Improvement]: "
+labels: "Improve existing docs, triage"
+issue_body: true
+inputs:
+- type: description
+  attributes:
+    value: 'HI HUBBER!! Please read the [contributing guidelines](https://github.com/github/docs-content/blob/main/CONTRIBUTING.md#using-this-repo) for the docs-content repository before
+           submitting this issue. Thanks so much for opening an issue to help us improve the docs :tada:
+           If this issue is for an **update to or a new feature that is not yet available to customers**, please use the [Release tracking issue template](https://github.com/github/docs-content/issues/new?assignees=&labels=Tracking+issue&template=release-tracking-issue.md&title=%5BEstimated+ship+date%5D%3A+Feature+name+or+description+%28release+phase%29) instead. THANK YOU!!'
+- type: input
+  attributes:
+    label: What feature or product is affected?
+    required: true
+- type: input
+  attributes:
+    label: What is the new or expected behavior?
+    required: true
+- type: textarea
+  attributes:
+    label: How is the old or inaccurate behavior currently documented?
+    description: Add links to specific documentation are not required but encouraged! We'll plan content design based on the information provided in this issue, so no need to be exhaustive.
+    required: true
+- type: input
+  attributes:
+    label: Who does this affect?
+    description: 'Be as specific as possible. Some examples:
+                 • People using a specific feature on GitHub Enterprise Server, GitHub AE, or GitHub.com
+                 • GitHub Enterprise Server administrators
+                 • Readers with a particular feature flag or optional feature enabled
+                 • Hubbers in Sales, Support, or the field
+                 • GitHub Actions developers
+                 • Integrators'
+    placeholder: People affected by the changes you're requesting
+    required: true
+- type: textarea
+  attributes:
+    label: What is the impact to users?
+    description: Please include consequences of not making these changes, and any additional context, like Zendesk tickets or issues.
+    placeholder: Impact and links to further context
+    required: true
+- type: description
+  attributes:
+    value: "**Note:** The Doctocat who triages this issue may invite you to open a PR to address it. Doing so is absolutely not required, though it's helpful for a speedy fix! Someone from our team will work with you to take your changes across the finish line.<br/><br/>"
+- type: textarea
+  attributes:
+    label: Content design and implementation (for Docs Content team members only)
+    description: If this improvement requires content design, add a [`cd-*` label](https://github.com/github/docs-content/labels?q=cd-) to this issue to create a template PR for developing the content design. You can create PRs for multiple phases of content design by applying labels for any subteam and release phase that this issue tracks. For more information, see [this README](https://github.com/github/docs-content-strategy/blob/main/content-design-plans).
+    required: false
+    value: "| Item | Core | DSP | Ecosystem/API |
+            | --- | --- | --- | --- |
+            | Content design plan | | | |"
+- type: description
+  attributes:
+    value: '**Please link any in-flight PRs to this issue.**'
