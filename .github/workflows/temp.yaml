@@ -10,6 +10,7 @@ jobs:
     steps:
       - name: Display the path
         run: |
-          print %ENV
-        shell: python
+          echo ${{ date -v+1w '+%V, %Y' }}
+          echo {{ date -v+1w '+%V, %Y' }}
+          echo date -v+1w '+%V, %Y'
 
