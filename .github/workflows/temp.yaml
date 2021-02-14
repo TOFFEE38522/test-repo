@@ -1,17 +1,16 @@
-name: Custom shell
+name: dates
 
-on: [push]
+on:
+  push
 
 jobs:
-  build:
-
-    runs-on: windows-latest
-
+  dates:
+    name: dates
+    runs-on: ubuntu-latest
     steps:
-      - name: Display the path
-        run: |
-          echo "DATE=$(date -d next-monday '+%b %d, %Y')" >> $GITHUB_ENV
-          echo ${{ env.DATE }}
 
-#          echo "DATE2=$(date -d next-monday '+%V, %Y')" >> $GITHUB_ENV
- #         echo ${{ env.DATE2 }}
+    - name: Set Date
+      run: echo "DATE=$(date -d next-monday '+%b %d, %Y')" >> $GITHUB_ENV
+
+    - name: print date
+      run: echo ${{ env.DATE }}
