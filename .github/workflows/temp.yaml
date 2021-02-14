@@ -10,6 +10,7 @@ jobs:
     steps:
       - name: Display the path
         run: |
-          echo "DATE=$(date -d+1w '+%V, %Y')" >> $GITHUB_ENV
+          echo "DATE=$(date -d next-monday '+%b %d, %Y')" >> $GITHUB_ENV
+          echo "DATE2=$(date -d next-monday '+%V, %Y')" >> $GITHUB_ENV
           echo ${{ env.DATE }}
-
+          echo ${{ env.DATE2 }}
