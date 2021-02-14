@@ -10,7 +10,7 @@ jobs:
     steps:
 
     - name: Set Date
-      run: echo "DATE=$(date -d next-monday '+%b %d, %Y')" >> $GITHUB_ENV
+      run: echo "DATE=$(date -d next-monday '+%V, %Y')" >> $GITHUB_ENV
 
     - name: print date
       run: echo ${{ env.DATE }}
