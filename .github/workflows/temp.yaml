@@ -10,7 +10,6 @@ jobs:
     steps:
       - name: Display the path
         run: |
-          echo ${{ date -v+1w '+%V, %Y' }}
           echo {{ date -v+1w '+%V, %Y' }}
           echo date -v+1w '+%V, %Y'
 
