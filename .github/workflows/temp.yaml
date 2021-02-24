@@ -11,11 +11,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Label new issues with 'triage'
-        uses: andymckay/labeler@master
-        with:
-          repo-token: '${{ secrets.GITHUB_TOKEN }}'
-          add-labels: 'triage'
+      - name: Run a one-line script
+        run: echo ${{ github.event }}
 
   peter-evans:
     name: peter evans comments
