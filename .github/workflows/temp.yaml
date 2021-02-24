@@ -27,7 +27,7 @@ jobs:
         body: |
           Comment 2
           
-  b4b4r07 comment:
+  b4b4r07-comment:
     name: b4b4r07 comment
     runs-on: ubuntu-latest
     steps:
