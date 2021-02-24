@@ -1,52 +1,70 @@
-name: label commenting
+# name: label commenting
 
+# on:
+#   issues:
+#     types:
+#       -labeled
+#   workflow_dispatch:
+
+# jobs:
+#   peter-evans:
+#     name: peter evans comments
+#     runs-on: ubuntu-latest
+#     steps:
+      
+#     - name: Create comment peter-evans
+#       uses: peter-evans/create-or-update-comment@v1
+#       with:
+#         issue-number: 1
+#         body: |
+#           This is a multi-line test comment
+#           - With GitHub **Markdown** :sparkles:
+
+#     - name: Create comment peter-evans with issue numb from event
+#       uses: peter-evans/create-or-update-comment@v1
+#       with:
+#         issue-number: ${{ github.event.issue.id }}
+#         body: |
+#           Comment 2
+          
+#   b4b4r07-comment:
+#     name: b4b4r07 comment
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: b4b4r07 comment hardcode
+#       uses: b4b4r07/action-github-comment@v1
+#       with:
+#         body: |
+#           Comment 3
+#         number: 1
+#       env:
+#         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#         LOG: trace
+#     - name: b4b4r07 comment
+#       uses: b4b4r07/action-github-comment@v1
+#       with:
+#         body: |
+#           Comment 3
+#       env:
+#         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#         LOG: trace
+
+
+name: Triage new issues
 on:
   issues:
     types:
-      -labeled
-  workflow_dispatch:
+      - reopened
+      - opened
 
 jobs:
-  peter-evans:
-    name: peter evans comments
+  triage_issues:
+    if: github.repository == 'github/docs'
     runs-on: ubuntu-latest
+
     steps:
-      
-    - name: Create comment peter-evans
-      uses: peter-evans/create-or-update-comment@v1
-      with:
-        issue-number: 1
-        body: |
-          This is a multi-line test comment
-          - With GitHub **Markdown** :sparkles:
-
-    - name: Create comment peter-evans with issue numb from event
-      uses: peter-evans/create-or-update-comment@v1
-      with:
-        issue-number: ${{ github.event.issue.id }}
-        body: |
-          Comment 2
-          
-  b4b4r07-comment:
-    name: b4b4r07 comment
-    runs-on: ubuntu-latest
-    steps:
-    - name: b4b4r07 comment hardcode
-      uses: b4b4r07/action-github-comment@v1
-      with:
-        body: |
-          Comment 3
-        number: 1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        LOG: trace
-    - name: b4b4r07 comment
-      uses: b4b4r07/action-github-comment@v1
-      with:
-        body: |
-          Comment 3
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        LOG: trace
-
-
+      - name: Label new issues with 'triage'
+        uses: rachmari/labeler@832d42ec5523f3c6d46e8168de71cd54363e3e2e
+        with:
+          repo-token: '${{ secrets.GITHUB_TOKEN }}'
+          add-labels: 'triage'
