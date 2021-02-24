@@ -56,6 +56,7 @@ on:
     types:
       - reopened
       - opened
+      - labeled
 
 jobs:
   triage_issues:
