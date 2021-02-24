@@ -1,16 +1,41 @@
-name: dates
+name: label commenting
 
 on:
-  push
+  issues:
+    types:
+      -labeled
 
 jobs:
-  dates:
-    name: dates
+  peter-evans:
+    name: peter evans comments
     runs-on: ubuntu-latest
     steps:
+      
+    - name: Create comment peter-evans
+      uses: peter-evans/create-or-update-comment@v1
+      with:
+        issue-number: 1
+        body: |
+          This is a multi-line test comment
+          - With GitHub **Markdown** :sparkles:
 
-    - name: Set Date
-      run: echo "DATE=$(date -d next-monday '+%V, %Y')" >> $GITHUB_ENV
+    - name: Create comment peter-evans with issue numb from event
+      uses: peter-evans/create-or-update-comment@v1
+      with:
+        issue-number: ${{ github.event.issue.id }}
+        body: |
+          Comment 2
+          
+  b4b4r07 comment:
+    name: b4b4r07 comment
+    runs-on: ubuntu-latest
+    steps:
+    - name: b4b4r07 comment
+      uses: b4b4r07/action-github-comment@v1
+      with:
+        body: |
+          Comment 3
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        LOG: trace
 
-    - name: print date
-      run: echo ${{ env.DATE }}
