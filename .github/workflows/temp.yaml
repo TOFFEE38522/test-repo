@@ -1,78 +1,35 @@
-# name: Triage new issues
-# on:
-#   issues:
-#     types:
-#       - reopened
-#       - opened
-#       - labeled
-
-# jobs:
-#   triage_issues:
-#     runs-on: ubuntu-latest
-
-#     steps:
-#       - name: Run a one-line script
-#         run: |
-#           echo ${{ github.event.issue }}
-#           echo ${{ github.event.issue.number }}
-#           echo ${{ github.event.issue.id }}
-
-#   peter-evans:
-#     name: peter evans comments
-#     runs-on: ubuntu-latest
-#     steps:
-      
-# #     - name: Create comment peter-evans
-# #       uses: peter-evans/create-or-update-comment@v1
-# #       with:
-# #         issue-number: 1
-# #         body: |
-# #           This is a multi-line test comment
-# #           - With GitHub **Markdown** :sparkles:
-
-#     - name: Create comment peter-evans with issue numb from event
-#       uses: peter-evans/create-or-update-comment@v1
-#       with:
-#         issue-number: ${{ github.event.issue.number }}
-#         body: |
-#           Comment 2
-          
-#   b4b4r07-comment:
-#     name: b4b4r07 comment
-#     runs-on: ubuntu-latest
-#     steps:
-#     - name: b4b4r07 comment hardcode
-#       uses: b4b4r07/action-github-comment@v1
-#       with:
-#         body: |
-#           Comment 3
-#         number: ${{ github.event.issue.number }}
-#       env:
-#         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#         LOG: trace
-# #     - name: b4b4r07 comment
-# #       uses: b4b4r07/action-github-comment@v1
-# #       with:
-# #         body: |
-# #           Comment 3
-# #       env:
-# #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-# #         LOG: trace
-
-
 name: Add comment
 on:
   issues:
     types:
       - labeled
 jobs:
-  add-comment:
+#   add-comment:
+#     if: github.event.label.name == 'bug'
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Add comment
+#         uses: peter-evans/create-or-update-comment@v1
+#         with:
+#           issue-number: ${{ github.event.issue.number }}
+#           body: |
+#             This issue is available for anyone to work on. **Make sure to reference this issue in your PR.** :sparkles: Thank you for your contribution! :sparkles:
+  and:
+    if: github.event.label.name == 'bug' && github.event.label.name == 'enhancement'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add comment
+        run: echo {{ github.event.label.name }}
+  single:
     if: github.event.label.name == 'bug'
     runs-on: ubuntu-latest
     steps:
       - name: Add comment
-        uses: peter-evans/create-or-update-comment@v1
-        with:
-          issue-number: ${{ github.event.issue.number }}
-          body: |
-            This issue is available for anyone to work on. **Make sure to reference this issue in your PR.** :sparkles: Thank you for your contribution! :sparkles:
+        run: echo {{ github.event.label.name }}
+  or:
+    if: github.event.label.name == 'bug' || github.event.label.name == 'enhancement'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add comment
+        run: echo {{ github.event.label.name }}
+
