@@ -1,35 +1,13 @@
-name: Add comment
+name: board
 on:
   issues:
-    types:
-      - labeled
+    types: [opened]
 jobs:
-#   add-comment:
-#     if: github.event.label.name == 'bug'
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Add comment
-#         uses: peter-evans/create-or-update-comment@v1
-#         with:
-#           issue-number: ${{ github.event.issue.number }}
-#           body: |
-#             This issue is available for anyone to work on. **Make sure to reference this issue in your PR.** :sparkles: Thank you for your contribution! :sparkles:
-  and:
-    if: github.event.label.name == 'bug' && github.event.label.name == 'enhancement'
+  Add_New_Issue_To_Project:
     runs-on: ubuntu-latest
     steps:
-      - name: Add comment
-        run: echo {{ github.event.label.name }}
-  single:
-    if: github.event.label.name == 'bug'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Add comment
-        run: echo {{ github.event.label.name }}
-  or:
-    if: github.event.label.name == 'bug' || github.event.label.name == 'enhancement'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Add comment
-        run: echo {{ github.event.label.name }}
-
+    - uses: konradpabjan/actions-add-new-issue-to-column@v1.1
+      with:
+        action-token: "${{ secrets.GITHUB_TOKEN }}"
+        project-url: "https://github.com/skedwards88/test-area-2/projects/1"
+        column-name: "In Progress"
