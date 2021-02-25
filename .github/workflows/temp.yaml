@@ -3,6 +3,8 @@ on:
   project_card:
     types:
       - moved
+      - created
+      - converted
 jobs:
   label_on_move:
     if: github.event.project_card.column_id == '13113146'
