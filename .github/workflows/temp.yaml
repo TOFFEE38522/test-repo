@@ -11,7 +11,15 @@ jobs:
 #         action-token: "${{ secrets.GITHUB_TOKEN }}"
 #         project-url: "https://github.com/skedwards88/test-area-2/projects/1"
 #         column-name: "In Progress"
-    - uses: hmarr/debug-action@vmaster
+    - uses: hmarr/debug-action@master
+  s2:
+    runs-on: ubuntu-latest
+    steps:
+#     - uses: konradpabjan/actions-add-new-issue-to-column@v1.1
+#       with:
+#         action-token: "${{ secrets.GITHUB_TOKEN }}"
+#         project-url: "https://github.com/skedwards88/test-area-2/projects/1"
+#         column-name: "In Progress"
 
     - run: |
         echo {{ github.event.projects }}
