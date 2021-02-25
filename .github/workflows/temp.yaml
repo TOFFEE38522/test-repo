@@ -1,30 +1,11 @@
-# name: label on move
-# on:
-#   project_card:
-#     types:
-#       - moved
-# jobs:
-#   label_on_move:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Label issues
-#         uses: andymckay/labeler@1.0.2
-#         with:
-#           repo-token: '${{ secrets.GITHUB_TOKEN }}'
-#           add-labels: 'bug'
-
-name: issue-automation
-
+name: label on move
 on:
-  issues:
-    types: [opened]
-  pull_request:
-    types: [opened]
   project_card:
-    types: [moved]
-
+    types:
+      - moved
 jobs:
-  automate-issues-labels:
+  label_on_move:
+    if: github.event.project_card.column_id == 'In Progress'
     runs-on: ubuntu-latest
     steps:
       - name: initial labeling
