@@ -1,18 +1,36 @@
-name: label on move
+# name: label on move
+# on:
+#   project_card:
+#     types:
+#       - moved
+# jobs:
+#   label_on_move:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Label issues
+#         uses: andymckay/labeler@1.0.2
+#         with:
+#           repo-token: '${{ secrets.GITHUB_TOKEN }}'
+#           add-labels: 'bug'
+
+name: issue-automation
+
 on:
+  issues:
+    types: [opened]
+  pull_request:
+    types: [opened]
   project_card:
-    types:
-      - moved
+    types: [moved]
+
 jobs:
-  label_on_move:
+  automate-issues-labels:
     runs-on: ubuntu-latest
     steps:
-      - name: Label issues
-        uses: andymckay/labeler@1.0.2
+      - name: initial labeling
+        uses: andymckay/labeler@master
         with:
-          repo-token: '${{ secrets.GITHUB_TOKEN }}'
-          add-labels: 'bug'
-
+          add-labels: "bug"
 
 # name: board
 # on:
