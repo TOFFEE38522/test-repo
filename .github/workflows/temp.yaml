@@ -23,7 +23,7 @@ jobs:
       steps:
         - uses: alex-page/github-project-automation-plus@v0.3.0
           with:
-            project: test
-            column: In progress
+            project: "test"
+            column: "In Progress"
             repo-token: ${{ secrets.GITHUB_TOKEN }}
 
