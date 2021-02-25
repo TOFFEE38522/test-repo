@@ -11,7 +11,7 @@ jobs:
       - name: initial labeling
         uses: andymckay/labeler@master
         with:
-          add-labels: "bug"
+          add-labels: "bug, help wanted, good-first-issue"
 
 # name: board
 # on:
