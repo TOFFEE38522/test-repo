@@ -5,7 +5,7 @@ on:
       - moved
 jobs:
   label_on_move:
-    if: github.event.project_card.column_id == 'In Progress'
+    if: github.event.project_card.column_id == '13113146'
     runs-on: ubuntu-latest
     steps:
       - name: initial labeling
