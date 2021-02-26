@@ -1,32 +1,32 @@
-name: label on move
-on:
-  project_card:
-    types:
-      - moved
-      - created
-      - converted
-jobs:
-  label_on_move:
-    if: github.event.project_card.column_id == '13113146'
-    runs-on: ubuntu-latest
-    steps:
-      - name: initial labeling
-        uses: andymckay/labeler@master
-        with:
-          remove-labels: "bug, help wanted, good-first-issue"
-
-# name: board
+# name: label on move
 # on:
-#   issues:
-#     types: [assigned]
 #   project_card:
+#     types:
+#       - moved
+#       - created
+#       - converted
 # jobs:
-#   Add_New_Issue_To_Project:
+#   label_on_move:
+#     if: github.event.project_card.column_id == '13113146'
 #     runs-on: ubuntu-latest
 #     steps:
-#     - uses: konradpabjan/actions-add-new-issue-to-column@v1.1
-#       with:
-#         action-token: "${{ secrets.GITHUB_TOKEN }}"
-#         project-url: "https://github.com/skedwards88/test-area-2/projects/1"
-#         column-name: "In Progress"
-#     - uses: hmarr/debug-action@master
+#       - name: initial labeling
+#         uses: andymckay/labeler@master
+#         with:
+#           remove-labels: "bug, help wanted, good-first-issue"
+
+name: board
+on:
+  issues:
+    types: [assigned]
+  project_card:
+jobs:
+  Add_New_Issue_To_Project:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: konradpabjan/actions-add-new-issue-to-column@v1.1
+      with:
+        action-token: "${{ secrets.GITHUB_TOKEN }}"
+        project-url: "https://github.com/skedwards88/test-area-2/projects/1"
+        column-name: "In Progress"
+    - uses: hmarr/debug-action@master
