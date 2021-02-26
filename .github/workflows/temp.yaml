@@ -20,13 +20,25 @@ on:
   issues:
     types: [assigned]
   project_card:
+# jobs:
+#   Add_New_Issue_To_Project:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - uses: konradpabjan/actions-add-new-issue-to-column@v1.1
+#       with:
+#         action-token: "${{ secrets.GITHUB_TOKEN }}"
+#         project-url: "https://github.com/skedwards88/test-area-2/projects/1"
+#         column-name: "In Progress"
+#     - uses: hmarr/debug-action@master
+
+
+
 jobs:
-  Add_New_Issue_To_Project:
+  automate-project-columns:
     runs-on: ubuntu-latest
     steps:
-    - uses: konradpabjan/actions-add-new-issue-to-column@v1.1
-      with:
-        action-token: "${{ secrets.GITHUB_TOKEN }}"
-        project-url: "https://github.com/skedwards88/test-area-2/projects/1"
-        column-name: "In Progress"
-    - uses: hmarr/debug-action@master
+      - uses: alex-page/github-project-automation-plus@v0.3.0
+        with:
+          project: test
+          column: test
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
