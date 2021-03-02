@@ -1,44 +1,14 @@
-# name: label on move
-# on:
-#   project_card:
-#     types:
-#       - moved
-#       - created
-#       - converted
-# jobs:
-#   label_on_move:
-#     if: github.event.project_card.column_id == '13113146'
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: initial labeling
-#         uses: andymckay/labeler@master
-#         with:
-#           remove-labels: "bug, help wanted, good-first-issue"
-
-name: board
+name: Label issues
 on:
   issues:
-    types: [assigned]
-  project_card:
-# jobs:
-#   Add_New_Issue_To_Project:
-#     runs-on: ubuntu-latest
-#     steps:
-#     - uses: konradpabjan/actions-add-new-issue-to-column@v1.1
-#       with:
-#         action-token: "${{ secrets.GITHUB_TOKEN }}"
-#         project-url: "https://github.com/skedwards88/test-area-2/projects/1"
-#         column-name: "In Progress"
-#     - uses: hmarr/debug-action@master
-
-
-
+    types:
+      - reopened
+      - opened
 jobs:
-  automate-project-columns:
+  triage_issues:
     runs-on: ubuntu-latest
     steps:
-      - uses: alex-page/github-project-automation-plus@v0.3.0
+      - name: Label issues
+        uses: andymckay/labeler@1.0.2
         with:
-          project: test
-          column: test
-          repo-token: ${{ secrets.FULL_TOKEN }}
+          add-labels: 'triage'
