@@ -6,14 +6,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: zero
-        run: exit 0
+        run: |
+          echo 'a'
+          exit 0
+          echo 'b'
         continue-on-error: true
       - name: neg
-        run: exit -1
+        run: |
+          echo 'a'
+          exit -1
+          echo 'b'
         continue-on-error: true
       - name: pos
-        run: exit 1
+        run: |
+          echo 'a'
+          exit 1
+          echo 'b'
         continue-on-error: true
       - name: str
-        run: exit 'cat'
+        run: |
+          echo 'a'
+          exit 'cat'
+          echo 'b'
         continue-on-error: true
