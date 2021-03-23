@@ -26,6 +26,6 @@ jobs:
       - name: str
         run: |
           echo 'a'
-          exit 'cat'
+          exit 1.3
           echo 'b'
         continue-on-error: true
