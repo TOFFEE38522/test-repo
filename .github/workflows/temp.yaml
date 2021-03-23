@@ -1,14 +1,19 @@
 name: Label issues
 on:
-  issues:
-    types:
-      - reopened
-      - opened
+  workflow_dispatch
 jobs:
   label_issues:
     runs-on: ubuntu-latest
     steps:
-      - name: Label issues
-        uses: andymckay/labeler@1.0.2
-        with:
-          add-labels: "triage"
+      - name: zero
+        run: exit 0
+        continue-on-error: true
+      - name: neg
+        run: exit -1
+        continue-on-error: true
+      - name: pos
+        run: exit 1
+        continue-on-error: true
+      - name: str
+        run: exit 'cat'
+        continue-on-error: true
