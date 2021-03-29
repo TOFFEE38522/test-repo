@@ -9,8 +9,12 @@ jobs:
 #         env:
 #           COMMAND_CONTEXT: ${{ toJSON(github.event) }}
 #         run: echo "$COMMAND_CONTEXT"
-      - name: first
-        run: exit 1
+#       - name: first
+#         run: exit 1
+      - name: skip
+        if: ${{ failure() }}
+        run: echo "skip"
+
       - name: The job has failed
         if: ${{ failure() }}
         run: echo "failed"
