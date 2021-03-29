@@ -5,27 +5,7 @@ jobs:
   label_issues:
     runs-on: ubuntu-latest
     steps:
-      - name: zero
-        run: |
-          echo 'a'
-          exit 0
-          echo 'b'
-        continue-on-error: true
-      - name: neg
-        run: |
-          echo 'a'
-          exit -1
-          echo 'b'
-        continue-on-error: true
-      - name: pos
-        run: |
-          echo 'a'
-          exit 1
-          echo 'b'
-        continue-on-error: true
-      - name: str
-        run: |
-          echo 'a'
-          exit 1.3
-          echo 'b'
-        continue-on-error: true
+      - name: Output command context
+        env:
+          COMMAND_CONTEXT: ${{ toJSON(github.event) }}
+        run: echo "$COMMAND_CONTEXT"
