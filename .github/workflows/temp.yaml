@@ -26,7 +26,7 @@ jobs:
   job_c2:
     runs-on: ubuntu-latest
     needs: [job_a, job_b]
-    if: ${{ needs.job_a.outputs.truthy_string }}
+    if: ${{ always() }}
     steps:
       - run: echo "This won't run, even though the IF condition evaluates true."
 
