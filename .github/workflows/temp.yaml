@@ -14,3 +14,10 @@ jobs:
       - run: echo "b"
       - if: ${{ success() }}
         run: echo "c"
+  job_c:
+    runs-on: ubuntu-latest
+    if: ${{ success() }}
+    steps:
+      - run: echo "b"
+      - if: ${{ success() }}
+        run: echo "c"
