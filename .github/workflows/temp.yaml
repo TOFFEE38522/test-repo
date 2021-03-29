@@ -14,7 +14,7 @@ jobs:
   job_b:
     runs-on: ubuntu-latest
     needs: job_a
-    if: needs.job_a.outputs.null_value
+#     if: needs.job_a.outputs.null_value
     steps:
       - run: echo "We've ensured this job will be skipped"
   job_c:
@@ -35,4 +35,4 @@ jobs:
     needs: [job_a, job_b]
     if: always() && needs.job_a.outputs.truthy_string
     steps:
-      - run: echo "This will run, even though we've only changed the condition from `true` to `true && true` val is ${{ always() }} val is ${{ needs.job_a.outputs.truthy_string }}"
+      - run: echo "This will run, even though we've only changed the condition from `true` to `true && true`"
