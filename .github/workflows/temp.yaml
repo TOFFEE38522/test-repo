@@ -1,1 +1,40 @@
+name: Label issues
+on:
+  workflow_dispatch
+jobs:
+jobs:
+  job_a:
+    runs-on: ubuntu-latest
+    outputs:
+      truthy_string: ${{ steps.a.outputs.always }}
+      null_value: ${{ steps.b.outputs.never }}
+    steps:
+      - id: a
+        run: echo "::set-output name=always::something"
+      - id: b
+        run: echo "We opt not to set any output at this time"
+  job_b:
+    runs-on: ubuntu-latest
+    needs: job_a
+    if: needs.job_a.outputs.null_value
+    steps:
+      - run: echo "We've ensured this job will be skipped"
+  job_c:
+    runs-on: ubuntu-latest
+    needs: [job_a, job_b]
+    if: needs.job_a.outputs.truthy_string
+    steps:
+      - run: echo "This won't run, even though the IF condition evaluates true."
+  job_d:
+    runs-on: ubuntu-latest
+    needs: [job_a, job_b]
+    if: always() && needs.job_a.outputs.truthy_string
+    steps:
+      - run: echo "This will run, even though we've only changed the condition from `true` to `true && true`"
 
+#       - name: Output command context
+#         env:
+#           COMMAND_CONTEXT: ${{ toJSON(github.event) }}
+#         run: echo "$COMMAND_CONTEXT"
+#       - name: first
+#         run: exit 1
