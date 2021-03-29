@@ -9,3 +9,6 @@ jobs:
         env:
           COMMAND_CONTEXT: ${{ toJSON(github.event) }}
         run: echo "$COMMAND_CONTEXT"
+      - name: pring
+        run: echo "known $GITHUB_REF job $GITHUB_JOB"
+
