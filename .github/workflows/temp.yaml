@@ -11,11 +11,10 @@ jobs:
 #         run: echo "$COMMAND_CONTEXT"
       - name: first
         run: exit 1
-        continue-on-error: true
       - name: The job has failed
         if: ${{ failure() }}
         run: echo "failed"
-      - name: The job has failed
+      - name: The job has success
         if: ${{ success() }}
         run: echo "success"
 
