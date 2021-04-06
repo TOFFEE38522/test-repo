@@ -3,25 +3,41 @@ on: workflow_dispatch
 jobs:
   job_a:
     runs-on: ubuntu-latest
+    outputs:
+      truthy_string: ${{ steps.a.outputs.always }}
+      null_value: ${{ steps.b.outputs.never }}
     steps:
       - id: a
-        run: |
-          echo the branch is ${{ env.default-branch }} the url is ${{ env.registry-url }}
-        env:
-          url: $registry-url
-          branch: $default-branch
-#   job_b:
-#     runs-on: ubuntu-latest
-#     needs: job_a
-#     if: ${{ success() }}
-#     steps:
-#       - run: echo "b"
-#       - if: ${{ success() }}
-#         run: echo "c"
-#   job_c:
-#     runs-on: ubuntu-latest
-#     if: ${{ success() }}
-#     steps:
-#       - run: echo "b"
-#       - if: ${{ success() }}
-#         run: echo "c"
+        run: echo "::set-output name=always::something"
+      - id: b
+        run: echo "We opt not to set any output at this time"
+  job_b:
+    runs-on: ubuntu-latest
+    needs: job_a
+    if: needs.job_a.outputs.null_value
+    steps:
+      - run: echo "We've ensured this job will be skipped"
+  job_c:
+    runs-on: ubuntu-latest
+    needs: [job_a, job_b]
+    if: needs.job_a.outputs.truthy_string
+    steps:
+      - run: echo "This won't run, even though the IF condition evaluates true."
+  job_d:
+    runs-on: ubuntu-latest
+    needs: [job_a, job_b]
+    if: always() && needs.job_a.outputs.truthy_string
+    steps:
+      - run: echo "This will run, even though we've only changed the condition from `true` to `true && true`"
+  job_e:
+    runs-on: ubuntu-latest
+    needs: [job_a, job_b]
+    if: success() && needs.job_a.outputs.truthy_string
+    steps:
+      - run: echo "This will run, even though we've only changed the condition from `true` to `true && true`"
+  job_f:
+    runs-on: ubuntu-latest
+    needs: [job_a, job_b]
+    if: failure() && needs.job_a.outputs.truthy_string
+    steps:
+      - run: echo "This will run, even though we've only changed the condition from `true` to `true && true`"
