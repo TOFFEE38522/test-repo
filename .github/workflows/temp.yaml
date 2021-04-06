@@ -24,3 +24,7 @@ jobs:
     if: failure()
     steps:
       - run: echo "c"
+  job_g:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "g"
