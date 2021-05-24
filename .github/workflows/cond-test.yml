@@ -1,0 +1,19 @@
+name: conditional test
+
+on: [push, workflow_dispatch]
+
+jobs:
+ one:
+   runs-on: ubuntu-latest
+   if: |
+     ${{ github.event_name == 'push' ||
+     github.repository == 'skedwards88/test-repo' }}
+   steps:
+     - run: echo 1
+ two:
+   runs-on: ubuntu-latest
+   if: |
+     github.event_name == 'push' ||
+     github.repository == 'skedwards88/test-repo'   
+   steps:
+     - run: echo 2
