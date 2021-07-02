@@ -8,4 +8,6 @@ jobs:
         env:
           REPO: ${{ github.repository }}
           NAME: ${{ github.repository.name }}
-        run: echo "$REPO" "$NAME"
+          NAME2: ${{ github.repository_name }}
+          OWNER: ${{ github.repository_owner }}
+        run: echo r "$REPO" n "$NAME" n2 "$NAME2" o "$OWNER"
