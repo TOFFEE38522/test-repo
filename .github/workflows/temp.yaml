@@ -1,7 +1,11 @@
 on: push
 
 jobs:
-  job_a:
-    runs-on: windows-2016
+  one:
+    runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ github.repository.name }}
+      - name: Dump GitHub context
+        env:
+          REPO: ${{ github.repository }}
+          NAME: ${{ github.repository.name }}
+        run: echo "$REPO" "$NAME"
