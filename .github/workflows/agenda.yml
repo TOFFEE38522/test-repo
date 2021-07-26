@@ -1,0 +1,43 @@
+name: Docs friction sync
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: 10 21 * * 5 # TODO Change this to be ~1 hr after the meeting
+
+jobs:
+  create_issue:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create issue
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          labels: "docs-friction-sync"
+          title: "Docs friction sync"
+          body: |
+            Previous meeting notes: https://github.com/github/docs-team/labels/docs-friction-sync
+
+            Zoom recoding of this meeting: 
+
+            ## Agenda
+
+              - [ ] Remind people to attend on Slack: #docs-content, #docs, #docs-engineering
+              - [ ] Designate note taker
+              - [ ] Start Zoom recording
+              - [ ] Add discussion items here 👇 
+                 - [ ] ...
+
+            ## Attendees
+
+            ## Notes
+
+            ## Action Items
+
+              - [ ] Share the recording on Slack
+              - [ ] Add the Zoom recording to this issue
+  
+          pinned: false
+          close-previous: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
