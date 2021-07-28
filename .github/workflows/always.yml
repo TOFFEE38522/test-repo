@@ -9,4 +9,5 @@ jobs:
      - name: fail
        run: exit 1
      - name: always
+       if: ${{ always() }}
        run: echo "did I run?"
