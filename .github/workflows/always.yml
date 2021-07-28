@@ -1,0 +1,12 @@
+name: always test
+
+on: workflow_dispatch
+
+jobs:
+ test_always:
+   runs-on: ubuntu-latest
+   steps:
+     - name: fail
+       run: exit 1
+     - name: always
+       run: echo "did I run?"
