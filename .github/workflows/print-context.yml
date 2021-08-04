@@ -1,0 +1,14 @@
+name: print pr context
+
+on:
+  pull_request:
+    types: [labeled]
+
+jobs:
+ test_always:
+   runs-on: ubuntu-latest
+   steps:
+   - name: print
+     env:
+      GITHUB_CONTEXT: ${{ toJSON(github) }}
+     run: echo "$GITHUB_CONTEXT"
