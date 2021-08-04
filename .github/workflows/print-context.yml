@@ -5,15 +5,14 @@ on:
     types: [labeled]
 
 jobs:
- print context:
-   runs-on: ubuntu-latest
-   steps:
-   - name: print context
-     env:
-      GITHUB_CONTEXT: ${{ toJSON(github) }}
-     run: echo "$GITHUB_CONTEXT"
-   - name: print node id of pr
-     env:
-      PR: ${{ github.event.pull_request.node_id }}
-     run: echo "$PR"
-
+  print context:
+    runs-on: ubuntu-latest
+    steps:
+    - name: print context
+      env:
+        GITHUB_CONTEXT: ${{ toJSON(github) }}
+      run: echo "$GITHUB_CONTEXT"
+    - name: print node id of pr
+      env:
+        PR: ${{ github.event.pull_request.node_id }}
+      run: echo "$PR"
