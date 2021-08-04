@@ -16,3 +16,7 @@ jobs:
       env:
         PR: ${{ github.event.pull_request.node_id }}
       run: echo "$PR"
+    - name: print node id of author
+      env:
+        PR: ${{ github.event.pull_request.user.node_id }}
+      run: echo "$PR"
